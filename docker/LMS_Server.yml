@@ -1,0 +1,17 @@
+version: '3'
+services:
+  squeezebox_stack:
+    container_name: SqueezeboxServer
+    image: lmscommunity/logitechmediaserver
+    volumes:
+      - /data/volumes/lms/config:/config:rw
+      - /mnt/nfs/media/music:/music:ro
+      - /mnt/nfs/media/music/playlists:/playlist:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    ports:
+      - 9000:9000/tcp
+      - 9090:9090/tcp
+      - 3483:3483/tcp
+      - 3483:3483/udp
+    restart: always
